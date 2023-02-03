@@ -8,8 +8,8 @@ const Banner = ({type, setGenre, genreArr}) => {
   useEffect(()=>{
     const fetchRandomMovie= async ()=>{
       try{
-        const [randomMovie]= await movieApi.getMovieRandom({type})
-        setMovie(randomMovie);
+        const randomMovie= await movieApi.getMovieRandom("series")
+        setMovie(randomMovie[0]);
       }catch(error){
         throw error
       }

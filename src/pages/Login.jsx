@@ -2,10 +2,12 @@ import React from 'react'
 import "../scss/login.scss"
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
-
+import { processLogin } from "../callApi/processLogin"
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    processLogin(data)
+  };
 
   return (
     <div className='login-container'>
@@ -17,9 +19,9 @@ const Login = () => {
         <div className='login-form'>
             <h1>Sign in</h1>
             <form onSubmit={handleSubmit(onSubmit)} >
-                <input type='email' {...register("example", { required: true}) } placeholder="Enter your email or phone number"/>
+                <input type='text' {...register("username", { required: true}) } placeholder="Enter your username"/>
                 {errors.example && <span>This field is required</span>}
-                <input type="password" {...register("exampleRequired", { required: true })} placeholder="Password"/>
+                <input type="password" {...register("password", { required: true })} placeholder="Password"/>
                 
                 {errors.exampleRequired && <span>This field is required</span>}
                 

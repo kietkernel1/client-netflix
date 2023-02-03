@@ -1,4 +1,6 @@
 import axios from "axios"
+import jwtDecode from "jwt-decode";
+import requestNewToken from "../callApi/processRefreshToken";
 
 const axiosClient = axios.create({
     baseURL: process.env.REACT_APP_API_baseURL,
@@ -8,8 +10,22 @@ const axiosClient = axios.create({
     },
 })
 
-axiosClient.interceptors.request.use(config=>{
-    config.headers.token="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyODQzMzc0NWI5YTE5YmM3OWE5MGZjMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NTM0ODgzNSwiZXhwIjoxNjU1MzUyNDM1fQ.2M16FyMx-v9wtu7LzvpEUEzxbiV7C_Tmvp7Y0Qdqhp8"
+axiosClient.interceptors.request.use( async config=>{
+    if(config.url=== "/auth/login"||config.url==="/auth/logout"){
+        return config;
+    }
+    let accessToken = localStorage.getItem("token")
+
+    const currentTime = new Date();
+    const decodedTokenTime = jwtDecode(accessToken.split(" ")[1])
+
+    if(decodedTokenTime.exp < currentTime.getTime()/1000){
+        const newToken= await requestNewToken()
+        accessToken= `Bearer ${newToken}`
+        localStorage.setItem("token", accessToken)
+    }
+
+    config.headers.token=accessToken
     return config
 }, error=>{
     throw error;
@@ -17,8 +33,8 @@ axiosClient.interceptors.request.use(config=>{
 
 axiosClient.interceptors.response.use(req =>
     req.data
-    , error =>{
+, error =>{
     throw error
-    })
+})
 
 export default axiosClient;

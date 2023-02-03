@@ -6,8 +6,10 @@ const movieApi={
         const movie= axiosClient.get(`/movies/find/${id}`)
         return movie;
     },
-    getMovieRandom(params){
-        const movie= axiosClient.get(`/movies/random`, {params})
+    getMovieRandom(type){
+        const movie = axiosClient.get(`/movies/random`, {params: {
+            type: type
+        }})
         return movie;
     }
 }

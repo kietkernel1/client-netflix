@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const MovieItem = ({id}) => {
   const [isPlay, setIsPlay]= useState(false);
   const [movie, setMovie]= useState({})
-
+  
   useEffect(()=>{
     const fetchMovieApi= async (id)=>{
     try{

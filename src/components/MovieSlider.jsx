@@ -20,6 +20,7 @@ const CustomArrow= (props)=>{
 
 const MovieSlider = ({list}) => {
   const {content, title}=list;
+  console.log(content)
     const settings = {
         dots: false,
         infinite: false,

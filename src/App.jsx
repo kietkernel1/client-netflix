@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import "./app.scss";
 import Home from "./pages/Home";
@@ -6,12 +7,12 @@ import Register from "./pages/Register"
 import Watch from "./pages/Watch"
 
 function App() {
-  const user= true;
+  const { user } = useSelector(state => state.loginReducer)
   
   return (
     <div className="App">
      <Routes>
-        <Route path="/" element ={user? <Home />: <Register />} />        
+        <Route path="/" element ={user? <Home />: <Login />} />        
         <Route path="/register" element ={<Register />} />
         <Route path="/login" element ={<Login />} />
       {user&&<>
