@@ -42,7 +42,7 @@ const MovieItem = ({id}) => {
         </div>  
 
         <div className='movie-desc'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+            {movie.briefDes}
         </div>
 
         <div className='genre'>

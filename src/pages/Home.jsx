@@ -9,9 +9,10 @@ import { useEffect, useState } from "react";
 const Home = ({type}) => {
   const [list, setList]= useState([]);
   const [genre, setGenre]= useState("");
-
+  
   useEffect( ()=>{
     const fetchApi= async ()=>{
+
       try{
         const data= await listApi({type, genre});
         setList(data);
@@ -23,9 +24,9 @@ const Home = ({type}) => {
     fetchApi();
   },[type, genre])
   const genreArr = list.reduce((arr,item)=>[...arr, item.genre] ,[])
-  console.log(genreArr)
+  
   return (
-
+    
     <div className= 'home-container'>
         <NavBar />
         <Banner type={type} genreArr={genreArr} setGenre={setGenre}/>

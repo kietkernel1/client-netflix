@@ -9,11 +9,9 @@ import globalStore from './Redux/globalStore';
 import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  
       <BrowserRouter>
       <Provider store={globalStore}>
         <App />
         </Provider>
       </BrowserRouter>
-  
 );
