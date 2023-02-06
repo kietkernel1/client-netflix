@@ -2,14 +2,20 @@ import React, { useState } from 'react'
 import "../scss/navBar.scss"
 import {Search, Notifications, ArrowDropDown} from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-
+import { fetchLogout } from "../callApi/processLogout"
+import { useSelector } from 'react-redux';
 const NavBar = () => {
   const [show, setShow]= useState(false);
   const [isScroll, setIsScroll] = useState(false);
-  window.onscroll=()=>{
-    
+  const { user } = useSelector( state => state.userReducer)
+
+  window.onscroll= ()=>{
     setIsScroll(window.pageYOffset ===0? false  : true)
     return ()=>window.onscroll=null
+  }
+
+  const handleLogout= async ()=>{
+    await fetchLogout()
   }
 
   return (
@@ -53,12 +59,14 @@ const NavBar = () => {
 
         <div className='nav-profile'>
         
-        <img src="https://firebasestorage.googleapis.com/v0/b/shop-cart-8f373.appspot.com/o/user-avatar.jpg?alt=media&token=1ae97af2-9a7a-4273-9e52-886ebe6eb63a" alt="" />
+        <img src= {user.avatar} alt="" />
         <div className='nav-setting'>
         <ArrowDropDown className='icon' onClick={()=>setShow(!show)}/>
         <ul style= {show? {display: "block"}: {display:"none"}}>
           <li>Setting</li>
-          <li>Logout</li>
+          <li
+            onClick={handleLogout}
+          >Logout</li>
         </ul>
 
         </div>

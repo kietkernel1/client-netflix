@@ -23,7 +23,7 @@ const Home = ({type}) => {
     fetchApi();
   },[type, genre])
   const genreArr = list.reduce((arr,item)=>[...arr, item.genre] ,[])
-
+  console.log(genreArr)
   return (
 
     <div className= 'home-container'>

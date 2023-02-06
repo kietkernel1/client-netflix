@@ -13,7 +13,7 @@
     margin: 80px auto 0 auto;
     background-color: var(--main-color);
     padding: 30px;
-    
+    padding-bottom: 20px;
     h1{
         margin: 0 0 10px 0;
 
@@ -33,6 +33,7 @@
         height: 170px;
         justify-content: space-between;
         input{
+            padding: 0 6px;
             height: 40px;
             font-size: 2rem;
             border-radius: 5px;
@@ -49,5 +50,9 @@
             }
         }
         
+    }
+
+    h3{
+        margin: 10px 0;
     }
 }

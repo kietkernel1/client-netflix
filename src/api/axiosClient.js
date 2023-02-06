@@ -11,7 +11,7 @@ const axiosClient = axios.create({
 })
 
 axiosClient.interceptors.request.use( async config=>{
-    if(config.url=== "/auth/login"||config.url==="/auth/logout"){
+    if(config.url=== "/auth/login"|| config.url==="/auth/logout" || config.url === "/auth/register"){
         return config;
     }
     let accessToken = localStorage.getItem("token")

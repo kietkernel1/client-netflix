@@ -6,7 +6,12 @@ export const userApi = {
     },
     
     logout(){
-        const url = "/auth/logout";
+        const url= "/auth/logout";
         return axiosClient.delete(url)
+    },
+
+    register(data){
+        const url = "/auth/register";
+        return axiosClient.post(url, data)
     }
 }

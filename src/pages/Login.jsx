@@ -1,12 +1,16 @@
 import React from 'react'
 import "../scss/login.scss"
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { processLogin } from "../callApi/processLogin"
+import { useSelector } from 'react-redux';
 const Login = () => {
+  const { error } = useSelector( state => state.userReducer)
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate()
   const onSubmit = data => {
     processLogin(data)
+    navigate("/")
   };
 
   return (
@@ -20,16 +24,14 @@ const Login = () => {
             <h1>Sign in</h1>
             <form onSubmit={handleSubmit(onSubmit)} >
                 <input type='text' {...register("username", { required: true}) } placeholder="Enter your username"/>
-                {errors.example && <span>This field is required</span>}
+                {errors.username && <span style={{ color: "red", textAlign: "center"}}>Don't be blank!!!</span>}
                 <input type="password" {...register("password", { required: true })} placeholder="Password"/>
                 
-                {errors.exampleRequired && <span>This field is required</span>}
-                
+                {errors.password && <span style={{ color: "red", textAlign: "center"}}>Don't be blank!!!</span>}
+                {error && <span style={{color: "red", textAlign: "center"}}> {error}</span>}
                 <input type="submit" value="Sign in" />
-    </form>
+            </form>
         <h3>New to Netflix? <Link to='/register'>Sign up now</Link></h3>
-        <p>This page is protected by Google reCAPTCHA to ensure you're not a bot. <Link to=''>Learn more.</Link>
-        </p>
         </div>
     </div>
   )

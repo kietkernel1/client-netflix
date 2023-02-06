@@ -2,7 +2,11 @@ import {
     LOGIN_LOADING,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT
+    LOGOUT,
+    REGISTER_LOADING,
+    REGISTER_SUCCESS,
+    REGISTER_FAIL,
+    RESET
 } from "./constant"
 
 const INITIAL_STATE = {
@@ -12,7 +16,7 @@ const INITIAL_STATE = {
 }
 
 
-const loginReducer = (state = INITIAL_STATE, action) =>{
+const userReducer = (state = INITIAL_STATE, action) =>{
     switch(action.type) {
         case LOGIN_LOADING: {
             return{
@@ -41,16 +45,45 @@ const loginReducer = (state = INITIAL_STATE, action) =>{
             }
         }
 
-        case LOGOUT:
+        case LOGOUT: {
             localStorage.clear()
             return {
+                ...state,
                 error: null,
                 user: null
             }
+        }
+            
+        case REGISTER_LOADING: {
+            return {
+                ...state,
+               loading: true
+            }
+        }
 
+        case REGISTER_SUCCESS: {
+            
+            return {
+                ...state,
+               loading: false
+            }
+        }
+
+        case REGISTER_FAIL: {
+            
+            return {
+                ...state,
+                error: action.payload,
+                loading: false
+            }
+        }
+
+        case RESET: {
+            return INITIAL_STATE
+        }
         default:
             return state
     }
 }
 
-export default loginReducer
+export default userReducer
