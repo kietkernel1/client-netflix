@@ -2,13 +2,24 @@ import React, { useEffect, useState } from 'react'
 import "../scss/banner.scss"
 import {PlayArrow, InfoOutlined} from '@mui/icons-material';
 import movieApi from '../api/movieApi';
-const Banner = ({type, setGenre, genreArr}) => {
+import listApi from '../api/listApi';
+
+const Banner = ({ type, setGenre }) => {
   const [movie, setMovie]= useState({});
+  const [genreArr, setGenreList] = useState([]);
   
+  useEffect(()=>{
+    console.log("sad")
+  },[window.innerWidth])
+
   useEffect(()=>{
     const fetchRandomMovie= async ()=>{
       try{
-        const randomMovie= await movieApi.getMovieRandom(type)
+        const randomMovie = await movieApi.getMovieRandom(type)
+        const genreList = await listApi({type})
+        setGenreList(genreList.reduce((arr, item) => 
+          [...arr, item.genre]
+          ,[]))
         setMovie(randomMovie[0]);
       }catch(error){
         throw error
@@ -16,8 +27,11 @@ const Banner = ({type, setGenre, genreArr}) => {
     }
 
     fetchRandomMovie();
+    return ()=>{
+      setGenre("")
+    }
   },[type])
-  console.log(genreArr)
+
   return (
     <div className='banner-container'>
         <img src={movie.img} alt="" />
@@ -26,10 +40,10 @@ const Banner = ({type, setGenre, genreArr}) => {
             <div className='banner-type' style={{visibility: type? "visible": "hidden"}}>
               <span>{type==="Series"?"Series": "Movies"}</span>
               <select onChange={(e)=>{setGenre(e.target.value)}}>
-                {genreArr.map((item, index)=>
+                {
+                  genreArr.map((item, index) =>
                   <option value={item}  key= {`3-${index}`}>{item}</option>
-                  )}
-                
+                )}
                 
               </select>
             </div>

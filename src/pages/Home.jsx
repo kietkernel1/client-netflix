@@ -6,39 +6,36 @@ import "../scss/home.scss"
 import listApi from "../api/listApi";
 import { useEffect, useState } from "react";
 
-const Home = ({type}) => {
-  const [list, setList]= useState([]);
-  const [genre, setGenre]= useState("");
-  
+const Home = ({ type }) => {
+  const [ searchList, setSearchList ] = useState([]);
+  const [ activeGenre, setActiveGenre ]= useState("");
+
   useEffect( ()=>{
     const fetchApi= async ()=>{
-
       try{
-        const data= await listApi({type, genre});
-        setList(data);
+        const data = await listApi({type, genre: activeGenre});
+        setSearchList(data);
       }catch(error){
         throw error
       }
     }
     
     fetchApi();
-  },[type, genre])
-  const genreArr = list.reduce((arr,item)=>[...arr, item.genre] ,[])
-  
+  },[ type, activeGenre ])
+
   return (
     
     <div className= 'home-container'>
         <NavBar />
-        <Banner type={type} genreArr={genreArr} setGenre={setGenre}/>
+        <Banner type={type} setGenre={setActiveGenre}/>
 
-        {list.map((item, index)=>
-           
-        <MovieSlider 
-        key={`2-${index}`}
-        list={item}
-        />
-        )}
-        
+        {searchList.map((item, index)=>
+          <MovieSlider 
+          key={`2-${index}`}
+          list={item}
+          />
+          )
+        }    
 
     </div>
   )

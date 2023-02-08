@@ -10,8 +10,8 @@ const CustomArrow= (props)=>{
   return(
     <>
     {type==="arrow-prev"?
-    <ArrowBackIosNew className={`${className} slick-custom-arrow`} style={style} onClick={onClick}/>
-    :<ArrowForwardIos className={`${className} slick-custom-arrow`} style={style} onClick={onClick}/>
+    <ArrowBackIosNew className={`${className} slick-custom-arrow`} style={{...style, left: "-45px"}} onClick={onClick}/>
+    :<ArrowForwardIos className={`${className} slick-custom-arrow`} style={{...style, right: "-45px"}} onClick={onClick}/>
   }
     </>
     
@@ -20,16 +20,16 @@ const CustomArrow= (props)=>{
 
 const MovieSlider = ({list}) => {
   const {content, title}=list;
-  console.log(content)
-    const settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        nextArrow: <CustomArrow type="arrow-next"/>,
-       prevArrow: <CustomArrow type="arrow-prev"/>
-      };
+
+  const settings = {
+      dots: false,
+      infinite: false,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      nextArrow: <CustomArrow type="arrow-next"/>,
+      prevArrow: <CustomArrow type="arrow-prev"/>
+    };
 
   return (
     <div className='slider-container'>

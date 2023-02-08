@@ -8,15 +8,15 @@
 
 @mixin navbar {
     display: flex;
-        justify-content: space-between;
-        align-items: center;    
-        padding: 0 30px;
-        
-        img{
-            width: 200px;
-            height: 80px;
-            object-fit: contain;
-        }
+    justify-content: space-between;
+    align-items: center;    
+    padding: 0 30px;
+    
+    img{
+        width: 200px;
+        height: 80px;
+        object-fit: contain;
+    }
 }
 
 .register-container{
@@ -51,12 +51,11 @@
     .form-handle    {
         display: flex;
         justify-content: center;
-        width: 50%;
-        margin: auto;
+        width: 500px;
         height: 50px;
         border-radius: 6px;
         overflow: hidden;
-        
+        margin: 0 auto;
         input{
             font-size: 2.5rem;
         }
@@ -74,6 +73,132 @@
 
             &:hover{
                 background-color: rgba($color: red, $alpha: 0.8);
+            }
+        }
+    }
+}
+
+// mobile: width >= 740 and < 1024
+
+@media only screen and (max-width: 739px) {
+    .register-container{
+        .register-nav{
+            padding: 15px 20px 0 20px;
+            img{
+                width: 150px;
+                height: 40px;
+            }
+        }
+    }
+
+    .register-form{
+        margin-top: 200px;
+        width: 80vw;
+        
+        h1{
+            font-size: 3.4rem;
+        }
+
+        h2{
+            font-size: 2.1rem;
+        }
+
+        .form-handle {
+            width: 100%;
+            margin-top: 20px;
+            overflow: visible;
+            height: 40px;
+            .form-text{ 
+                width: 200px;
+                border-radius: 5px;
+
+            }
+
+            .form-submit{
+
+                border-radius: 5px;
+
+            }
+        }
+    }
+}
+
+// Tablet: width >= 740 and < 1024
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+    .register-container{
+        .register-nav{
+            span{
+                font-size: 3rem;
+            }
+        }
+    }
+
+    .register-form{
+        width: 85vw;
+        margin-top: 200px;
+        h2{
+            font-size: 3rem;
+        }
+
+        p{
+            font-size: 2rem;
+        }
+        .form-handle {
+            margin-top: 40px;
+            overflow: visible;
+            .form-text{
+                padding: 10px;
+                width: 40vw;
+                border-radius: 5px;
+            }
+
+            .form-submit{
+                border-radius: 5px;
+                padding: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
+    .register-container{
+        .register-nav{
+            img{
+                width: 150px;
+                height: 60px;
+            }
+            span{
+                font-size: 2rem;
+            }
+        }
+    }
+
+    .register-form{
+        margin-top: 40px;
+        width: 80vw;
+        h1{
+            font-size: 3.4rem;
+        }
+
+        h2{
+            font-size: 2.1rem;
+        }
+
+        .form-handle {
+            width: 100%;
+            overflow: visible;
+            display: block;
+            margin-top: 10px;
+            .form-text{
+                width: 30vw;
+                border-radius: 5px;
+                padding: 5px;
+            }
+
+            .form-submit{
+                border-radius: 5px;
+                width: 18vw;
+                padding: 5px;
             }
         }
     }
