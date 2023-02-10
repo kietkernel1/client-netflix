@@ -65,4 +65,31 @@
     border-radius: 50%;
 }
 
+@media only screen and (max-width: 739px) {
+    .movie-container{
+        width: 90px;
+        height: 80px;
+        margin-bottom: 0px;
+    }
+}
 
+@media (max-width: 1000px) and (orientation: landscape) {
+    .movie-container{
+        width: 200px;
+        height: 100px;
+        margin-bottom: 0px;
+        &:hover{
+            position: inherit;
+            top: inherit;
+            transform: inherit;
+            .movie-detail{
+                display: none !important;
+            }
+        }
+
+        video{
+            display: none;
+        }
+    }
+    
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "../scss/navBar.scss"
-import {Search, Notifications, ArrowDropDown} from '@mui/icons-material';
+import {Search, Notifications, ArrowDropDown, Menu, Close} from '@mui/icons-material';
+
 import { Link } from 'react-router-dom';
 import { fetchLogout } from "../callApi/processLogout"
 import { useSelector } from 'react-redux';
@@ -20,11 +21,12 @@ const NavBar = () => {
 
   return (
     <div className={`nav-container ${isScroll?`nav-container-scroll`: ``}`}>
+      <div className='nav-logo'>
         <Link to="/">
-        <div className='nav-logo'>  
         <img src='https://firebasestorage.googleapis.com/v0/b/shop-cart-8f373.appspot.com/o/Netflix_logo.svg.png?alt=media&token=cad434be-6be7-4fe8-ab5c-31593e90ac7a' alt=""></img>
-        </div>
+        
         </Link>
+      </div>
       <div className='nav-router'>
         <Link to='/'>
           Home
@@ -71,8 +73,60 @@ const NavBar = () => {
 
         </div>
         </div>
+
+        
       </div>
       
+        <div className='nav-mobile'>
+          <label for="input-openMenu">
+            <Menu style={{fontSize: "3.5rem", marginRight: "20px"}}/>
+          </label>
+        </div>
+        
+        <input type="checkbox" hidden id='input-openMenu' className='nav-mobile-input'></input>
+
+        <label for="input-openMenu" className='nav-overlap'>
+        </label>
+
+        
+        <div className="nav-mobile-option">
+
+          <div className="nav-mobile-account">
+            <img src= {user.avatar} alt="" />
+
+            <label htmlFor="input-openMenu">
+              <Close style={{fontSize: "3rem", marginRight:"10px"}}/> 
+            </label>
+          </div>
+          <hr/>
+          <div className="nav-mobile-feature">
+            
+            <Link to='/'>
+              Home
+            </Link>  
+
+            <Link to='/series'>
+              Series
+            </Link>
+
+            <Link to='/movies'>
+              Movies
+            </Link>
+
+            <Link to='#'>
+              New and Popular
+            </Link>
+
+            <Link to='#'>
+              My List
+            </Link>
+
+            
+          </div>
+          <hr/>
+          <p>Logout</p>
+        </div>
+
     </div>
   )
 }

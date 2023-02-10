@@ -1,7 +1,6 @@
 
 .banner-container{
     
-    
     position: relative;
     z-index:0;
     max-width: 100vw;
@@ -38,7 +37,7 @@
 .banner-icon{
     display: flex;
     align-items: center;
-
+    justify-content: center;
     width: 70px;
     cursor: pointer;
     font-size: 2rem;
@@ -65,7 +64,6 @@
     font-size: 3rem;
     margin-bottom: 30px;
     display: flex;
-    align-items: center;
     span{
         margin-right: 10px;
     }
@@ -74,10 +72,95 @@
         outline: none;
         background-color: var(--main-color);
         color: var(--sub-color);
-       padding: 3px;
+        padding: 3px;
         option{
             color: var(--sub-color);
             background-color: rgba(11, 11, 11, 0.7);;
+        }
+    }
+}
+
+@media only screen and (max-width: 739px) {
+    .banner-container{
+        height: 40vh;
+        img{
+            opacity: 0.75;
+            width: 100%;
+            height: 100%;
+            object-fit:fill;
+        }
+    }
+
+    .banner-brief{
+        top: 25% !important;
+        max-width: 60vw !important;
+    }
+
+    .banner-movie-des{
+        display: none;
+    }
+
+    .banner-movie-title{
+
+        display: none;
+
+    }
+
+    .banner-icon-container{
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    .banner-title{
+        max-height: 150px !important;
+        object-fit: contain;
+    }
+
+    .banner-type{
+        span{
+            font-size: 3rem;
+        }
+    }
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
+    .banner-container{
+
+        img{
+            opacity: 0.75;
+            width: 100%;
+            height: 100%;
+            object-fit:fill;
+        }
+    }
+
+    .banner-brief{
+        max-width: 60vw !important;
+    }
+
+    .banner-movie-des{
+        display: none;
+    }
+
+    .banner-movie-title{
+
+        display: none;
+
+    }
+
+    .banner-icon-container{
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    .banner-title{
+        max-height: 150px !important;
+        object-fit: contain;
+    }
+
+    .banner-type{
+        span{
+            font-size: 3rem;
         }
     }
 }

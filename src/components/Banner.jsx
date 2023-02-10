@@ -7,10 +7,6 @@ import listApi from '../api/listApi';
 const Banner = ({ type, setGenre }) => {
   const [movie, setMovie]= useState({});
   const [genreArr, setGenreList] = useState([]);
-  
-  useEffect(()=>{
-    console.log("sad")
-  },[window.innerWidth])
 
   useEffect(()=>{
     const fetchRandomMovie= async ()=>{
@@ -48,9 +44,9 @@ const Banner = ({ type, setGenre }) => {
               </select>
             </div>
             
-            <img src={movie.imgTitle} alt="" />
-            <h1>{movie.title}</h1>
-            <p>{movie.description}</p>
+            <img src={movie.imgTitle} alt="" className='banner-title'/>
+            <h1 className='banner-movie-title'>{movie.title}</h1>
+            <p className='banner-movie-des'>{movie.description}</p>
             
             <div className='banner-icon-container'>
               <div className='banner-icon'>

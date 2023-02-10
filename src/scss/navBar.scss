@@ -2,7 +2,7 @@
     background-image: linear-gradient(0deg, rgba(11, 11, 11, 0.0), rgba(11, 11, 11, 0.9));
     z-index: 2;
     position: fixed;
-    width: 100%;
+    width: 100vw;
     display: flex;
     align-items: center;
     font-weight: 700;
@@ -122,4 +122,129 @@
 
 .nav-container-scroll{
     background-image: linear-gradient(0deg, rgba(11, 11, 11, 0.3), rgba(11, 11, 11, 0.9));
+}
+.nav-mobile{
+    display: none;
+}
+
+.nav-mobile-option{
+    width: 200px;
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    height: fit-content;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 15px;
+    transform: translateX(100%);
+    transition: all linear 0.2s;
+    .nav-mobile-feature{
+        display: flex;
+        flex-direction: column;
+    }
+
+    a{
+        color: white;
+        text-decoration: none;
+        margin: 20px 0;
+        font-size: 2rem;
+    }
+    p{
+        font-size: 2rem;
+    }
+
+    .nav-mobile-account{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        img{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+    }
+}
+
+.nav-overlap{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+#input-openMenu:checked ~ .nav-overlap {
+    display: block;
+}
+
+#input-openMenu:checked ~ .nav-mobile-option {
+    display: block;
+    transform: translateX(0%);
+}
+
+@media only screen and (max-width: 739px) {
+    .nav-container{
+        padding-top: 20px;
+    }
+    .nav-router {
+        display: none;
+    }
+
+    .nav-feature{
+        display: none;
+    }
+
+    .nav-logo{
+        margin-right: auto;
+        margin-left: 20px !important;
+    }
+
+    .nav-mobile{
+        display: block;
+    }
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
+    .nav-container{
+        padding-top: 10px;
+    }
+    .nav-router {
+        display: none;
+    }
+
+    .nav-feature{
+        display: none;
+    }
+
+    .nav-logo{
+        margin-right: auto;
+        margin-left: 20px !important;
+    }
+
+    .nav-mobile{
+        display: block;
+    }
+
+    .nav-mobile-option{
+        a{
+            font-size: 1.7rem ;
+            margin: 11px 0;
+        }
+
+        p{
+            font-size: 1.7rem;
+        }
+
+        .nav-mobile-account{
+            img{
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
 }

@@ -21,10 +21,12 @@ const MovieItem = ({id}) => {
   },[id])
 
   return (
+    <Link to="/watch" state={{movie:movie.trailer}} >
     <div onMouseLeave={()=>setIsPlay(false)} onMouseEnter={()=>setIsPlay(true)} className= 'movie-container'>
+        
         <img src= {movie.imgSm} alt="" />
-       { isPlay&& <Link to="/watch" state={{movie:movie.trailer}} ><video src= {movie.trailer} autoPlay={true} loop />
-       </Link> 
+       { isPlay&& <video src= {movie.trailer} autoPlay={true} loop />
+       
 }
     <div className='movie-detail'>
         
@@ -50,6 +52,7 @@ const MovieItem = ({id}) => {
         </div>
     </div>
     </div>
+    </Link> 
   )
 }
 
