@@ -78,14 +78,14 @@ const NavBar = () => {
       </div>
       
         <div className='nav-mobile'>
-          <label for="input-openMenu">
+          <label htmlFor="input-openMenu">
             <Menu style={{fontSize: "3.5rem", marginRight: "20px"}}/>
           </label>
         </div>
         
         <input type="checkbox" hidden id='input-openMenu' className='nav-mobile-input'></input>
 
-        <label for="input-openMenu" className='nav-overlap'>
+        <label htmlFor="input-openMenu" className='nav-overlap'>
         </label>
 
         
@@ -124,7 +124,9 @@ const NavBar = () => {
             
           </div>
           <hr/>
-          <p>Logout</p>
+          <p
+            onClick={handleLogout}
+          >Logout</p>
         </div>
 
     </div>

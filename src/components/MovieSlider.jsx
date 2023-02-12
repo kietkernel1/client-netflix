@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
 import "../scss/movieSlider.scss"
 import MovieItem from './MovieItem';
@@ -19,14 +19,27 @@ const CustomArrow= (props)=>{
 }
 
 const MovieSlider = ({list}) => {
-  const {content, title}=list;
+  const {content, title}= list;
+  const [trigger, setTrigger] = useState(false)
+  useEffect(()=>{
+    const handleResponsive = ()=>{
 
+      setTrigger(window.innerWidth < 740)
+    }
+    setTrigger(window.innerWidth < 740)
+    
+    window.addEventListener("resize", handleResponsive)
+
+    return ()=>{
+      window.removeEventListener("resize", handleResponsive)
+    }
+  },[])
   const settings = {
       dots: false,
       infinite: false,
       speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 4,
+      slidesToShow: trigger? 3 : 4,
+      slidesToScroll: trigger? 3 : 4,
       nextArrow: <CustomArrow type="arrow-next"/>,
       prevArrow: <CustomArrow type="arrow-prev"/>
     };

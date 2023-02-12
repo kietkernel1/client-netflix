@@ -83,17 +83,11 @@
 @media only screen and (max-width: 739px) {
     .banner-container{
         height: 40vh;
-        img{
-            opacity: 0.75;
-            width: 100%;
-            height: 100%;
-            object-fit:fill;
-        }
     }
 
     .banner-brief{
-        top: 25% !important;
-        max-width: 60vw !important;
+        top: 20% !important;
+        max-width: 70vw !important;
     }
 
     .banner-movie-des{
@@ -101,9 +95,8 @@
     }
 
     .banner-movie-title{
-
         display: none;
-
+        
     }
 
     .banner-icon-container{
@@ -112,30 +105,30 @@
     }
 
     .banner-title{
-        max-height: 150px !important;
-        object-fit: contain;
+        max-height: 120px !important;
     }
 
     .banner-type{
+        margin-bottom: 40px;
         span{
-            font-size: 3rem;
+            font-size: 2.5rem;
         }
     }
 }
 
 @media (max-width: 1000px) and (orientation: landscape) {
     .banner-container{
-
-        img{
-            opacity: 0.75;
-            width: 100%;
-            height: 100%;
-            object-fit:fill;
-        }
+        height: 70vh !important;
     }
 
     .banner-brief{
+        top: 20% !important;
         max-width: 60vw !important;
+        img{
+
+            max-height: 130px !important;
+            object-fit: fill !important;
+        }
     }
 
     .banner-movie-des{
@@ -143,24 +136,76 @@
     }
 
     .banner-movie-title{
-
         display: none;
-
     }
 
     .banner-icon-container{
-        margin-top: 10px;
+        margin-top: 0px;
         justify-content: center;
-    }
 
-    .banner-title{
-        max-height: 150px !important;
-        object-fit: contain;
+        span{
+            font-size: 2rem;
+        }
     }
 
     .banner-type{
+        margin-bottom: 0px;
         span{
-            font-size: 3rem;
+            font-size: 2.5rem;
         }
     }
+}
+
+@media only screen and (min-width: 740px) and (max-width: 1024px) and (orientation: portrait){
+
+    .banner-container{
+        height: 50vh;
+    }
+
+    .banner-movie-title{
+        font-size: 4rem;
+        margin: 0;
+    }
+    
+    .banner-movie-des{
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .banner-brief{
+        top: 15% !important;
+        max-width: 70vw !important;
+    }
+
+    .banner-title{
+        max-height: 170px !important;
+    }
+
+}
+
+@media only screen and (min-width: 740px) and (max-width: 1024px) and (orientation: landscape){
+    .banner-container{
+        height: 70vh;
+    }
+
+    .banner-movie-title{
+        font-size: 4rem;
+        margin: 0;
+    }
+    
+    .banner-movie-des{
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .banner-brief{
+        top: 20% !important;
+        max-width: 70vw !important;
+    }
+
+    .banner-title{
+        max-height: 170px !important;
+        object-fit: contain !important;
+    }
+
 }

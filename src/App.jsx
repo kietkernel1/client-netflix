@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import "./app.scss";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -8,7 +9,13 @@ import Watch from "./pages/Watch"
 
 function App() {
   const { user } = useSelector(state => state.userReducer)
-
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if(!user){
+      navigate("/login")
+    }
+    
+  },[user])
   return (
     <div className="App">
      <Routes>
