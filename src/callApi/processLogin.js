@@ -13,7 +13,7 @@ export const processLogin = async (account) =>{
         globalStore.dispatch({type: LOGIN_SUCCESS, payload: user})
  
     }catch(err){
-        // globalStore.dispatch({type: LOGIN_FAIL, payload: err.response.data})
-        console.log(err)
+        globalStore.dispatch({type: LOGIN_FAIL, payload: err.response.data})
+        return "error"
     }
 }

@@ -8,10 +8,11 @@ const Login = () => {
   const { error } = useSelector( state => state.userReducer)
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate()
-
+  
   const onSubmit = async data => {
-    await processLogin(data)
-    navigate("/")
+    const msg = await processLogin(data)
+    
+    !msg && navigate("/")
   };
 
   return (
